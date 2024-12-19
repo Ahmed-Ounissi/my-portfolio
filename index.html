@@ -214,27 +214,30 @@
 
         <!--===== SCROLL REVEAL =====-->
         <script type="text/javascript">
-            // Debugging: Log when the script is loaded
-            console.log("Script Loaded");
+            document.addEventListener('DOMContentLoaded', function() {
+                // Make sure the DOM is fully loaded before binding the form submit event
+                const contactForm = document.getElementById('contact-form');
 
-            // Form submission handler
-            document.getElementById('contact-form').addEventListener('submit', function(event){
-                event.preventDefault();  // Prevents the form from reloading the page
-                console.log("Form submitted"); // Debugging: Check if the form submit is triggered
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function(event) {
+                        event.preventDefault();  // Prevents the form from reloading the page
+                        console.log("Form submitted"); // Debugging: Check if the form submit is triggered
 
-                // Get form values
-                const formData = new FormData(this);
-                console.log("Form Data: ", formData); // Debugging: Log form data
+                        // Get form values
+                        const formData = new FormData(this);
+                        console.log("Form Data:", formData); // Debugging: Log form data
 
-                // Send email via EmailJS
-                emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
-                    .then(function(response) {
-                        console.log('Success:', response);
-                        alert('Message sent successfully!');
-                    }, function(error) {
-                        console.error('Failed:', error);
-                        alert('Something went wrong. Please try again.');
+                        // Send email via EmailJS
+                        emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
+                            .then(function(response) {
+                                console.log('Success:', response);
+                                alert('Message sent successfully!');
+                            }, function(error) {
+                                console.error('Failed:', error);
+                                alert('Something went wrong. Please try again.');
+                            });
                     });
+                }
             });
         </script>
         <!--===== MAIN JS =====-->
