@@ -11,7 +11,7 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 
-emailjs.init("aknDs3jAzDlkvygrv);
+emailjs.init("aknDs3jAzDlkvygrv");
 
 // Form submission handling
 cconst form = document.getElementById('contact-form');
