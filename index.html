@@ -180,23 +180,24 @@
     <h2 class="section-title">Contact</h2>
 
     <div class="contact__container bd-grid">
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="contact__form">
-            <!-- Name Field -->
-            <input type="text" name="from_name" placeholder="Name" class="contact__input" required>
+                <!-- Form Element with proper ID -->
+                <form id="contact-form" action="#" method="POST" class="contact__form">
+                    <!-- Name Field -->
+                    <input type="text" name="from_name" placeholder="Name" class="contact__input" required>
 
-            <!-- Email Field -->
-            <input type="email" name="from_email" placeholder="Email" class="contact__input" required>
+                    <!-- Email Field -->
+                    <input type="email" name="from_email" placeholder="Email" class="contact__input" required>
 
-            <!-- Message Field -->
-            <textarea name="message" placeholder="Your Message" class="contact__input" required></textarea>
+                    <!-- Message Field -->
+                    <textarea name="message" placeholder="Your Message" class="contact__input" required></textarea>
 
-            <!-- Hidden Input for Reply-To -->
-            <input type="hidden" name="_replyto" value="{{from_email}}">
+                    <!-- Reply-To Hidden Input -->
+                    <input type="hidden" name="_replyto" value="from_email">
 
-            <!-- Submit Button -->
-            <input type="submit" value="Send" class="contact__button button">
-        </form>
-    </div>
+                    <!-- Submit Button -->
+                    <input type="submit" value="Send" class="contact__button button">
+                </form>
+            </div>
 </section>
         </main>
 
@@ -213,27 +214,25 @@
 
 
         <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <!-- Main JS script for form submission -->
-            <script type="text/javascript">
-                // Form submission handler
-                document.getElementById('contact-form').addEventListener('submit', function(event){
-                    event.preventDefault();  // Prevents the form from reloading the page
-        
-                    // Get form values
-                    const formData = new FormData(this);
-        
-                    // Send email via EmailJS
-                    emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
-                        .then(function(response) {
-                            console.log('Success:', response);
-                            alert('Message sent successfully!');
-                        }, function(error) {
-                            console.error('Failed:', error);
-                            alert('Something went wrong. Please try again.');
-                        });
-                });
-            </script>
+        <script type="text/javascript">
+            // Form submission handler
+            document.getElementById('contact-form').addEventListener('submit', function(event){
+                event.preventDefault();  // Prevents the form from reloading the page
+
+                // Get form values
+                const formData = new FormData(this);
+
+                // Send email via EmailJS
+                emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
+                    .then(function(response) {
+                        console.log('Success:', response);
+                        alert('Message sent successfully!');
+                    }, function(error) {
+                        console.error('Failed:', error);
+                        alert('Something went wrong. Please try again.');
+                    });
+            });
+        </script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
     </body>
