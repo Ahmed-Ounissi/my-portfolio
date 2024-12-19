@@ -16,6 +16,10 @@ emailjs.init("aknDs3jAzDlkvygrv);
 // Form submission handling
 cconst form = document.getElementById('contact-form');
 const submitButton = form.querySelector('.contact__button');
+form.addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent default form submission
+  console.log('Form submitted');
+});
 
 // Add an event listener for form submission
 form.addEventListener('submit', function (event) {
