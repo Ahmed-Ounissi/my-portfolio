@@ -14,7 +14,7 @@ showMenu('nav-toggle','nav-menu')
 emailjs.init("aknDs3jAzDlkvygrv");
 
 // Form submission handling
-cconst form = document.getElementById('contact-form');
+const form = document.getElementById('contact-form');
 const submitButton = form.querySelector('.contact__button');
 form.addEventListener('submit', function (event) {
   event.preventDefault(); // Prevent default form submission
