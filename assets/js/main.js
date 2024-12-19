@@ -14,24 +14,58 @@ showMenu('nav-toggle','nav-menu')
 emailjs.init("aknDs3jAzDlkvygrv);
 
 // Form submission handling
-const contactForm = document.getElementById('contact-form');
+cconst form = document.getElementById('contact-form');
+const submitButton = form.querySelector('.contact__button');
 
-contactForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent default form submission
+// Add an event listener for form submission
+form.addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent the default form submission behavior
 
-    // Show a loading message or spinner if needed
-    const formData = new FormData(contactForm);
+  // Validate the form fields
+  if (!validateForm()) {
+    alert('Please fill in all required fields correctly.');
+    return;
+  }
 
-    emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', contactForm)
-        .then(() => {
-            alert('Message sent successfully!');
-            contactForm.reset(); // Clear form fields
-        })
-        .catch((error) => {
-            console.error('EmailJS Error:', error);
-            alert('Failed to send the message. Please try again.');
-        });
+  // Update the button to show sending status
+  submitButton.value = 'Sending...';
+
+  // Send the email using EmailJS
+  emailjs
+    .sendForm('service_z42zp7v', 'template_nnr11ry', form)
+    .then(() => {
+      // Show success feedback
+      alert('Message sent successfully!');
+      form.reset(); // Clear the form fields
+      submitButton.value = 'Send Email'; // Reset the button text
+    })
+    .catch((error) => {
+      // Show error feedback
+      console.error('Failed to send email:', error);
+      alert('Failed to send the message. Please try again later.');
+      submitButton.value = 'Send Email'; // Reset the button text
+    });
 });
+
+// Function to validate the form fields
+function validateForm() {
+  const name = form.querySelector('input[name="from_name"]').value.trim();
+  const email = form.querySelector('input[name="from_email"]').value.trim();
+  const message = form.querySelector('textarea[name="message"]').value.trim();
+
+  // Basic validation for empty fields and email format
+  if (!name || !email || !message) return false;
+
+  if (!validateEmail(email)) return false;
+
+  return true;
+}
+
+// Helper function to validate email format
+function validateEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link')
