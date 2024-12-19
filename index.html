@@ -180,22 +180,12 @@
             <h2 class="section-title">Contact</h2>
             <div class="contact__container bd-grid">
                 <!-- Form Element with proper ID -->
-                <form id="contact-form" action="#" method="POST" class="contact__form">
-                    <!-- Name Field -->
-                    <input type="text" name="from_name" placeholder="Name" class="contact__input" required>
-
-                    <!-- Email Field -->
-                    <input type="email" name="from_email" placeholder="Email" class="contact__input" required>
-
-                    <!-- Message Field -->
-                    <textarea name="message" placeholder="Your Message" class="contact__input" required></textarea>
-
-                    <!-- Reply-To Hidden Input -->
-                    <input type="hidden" name="_replyto" value="from_email">
-
-                    <!-- Submit Button -->
-                    <input type="submit" value="Send" class="contact__button button">
-                </form>
+            <form id="contact-form" action="#" method="POST">
+                <input type="text" name="from_name" placeholder="Your Name" required>
+                <input type="email" name="from_email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="submit" value="Send">
+            </form>
             </div>
         </section>
         </main>
