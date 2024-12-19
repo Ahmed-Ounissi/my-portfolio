@@ -177,9 +177,8 @@
 
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="contact__container bd-grid">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact__container bd-grid">
                 <!-- Form Element with proper ID -->
                 <form id="contact-form" action="#" method="POST" class="contact__form">
                     <!-- Name Field -->
@@ -198,7 +197,7 @@
                     <input type="submit" value="Send" class="contact__button button">
                 </form>
             </div>
-</section>
+        </section>
         </main>
 
         <!--===== FOOTER =====-->
@@ -215,12 +214,17 @@
 
         <!--===== SCROLL REVEAL =====-->
         <script type="text/javascript">
+            // Debugging: Log when the script is loaded
+            console.log("Script Loaded");
+
             // Form submission handler
             document.getElementById('contact-form').addEventListener('submit', function(event){
                 event.preventDefault();  // Prevents the form from reloading the page
+                console.log("Form submitted"); // Debugging: Check if the form submit is triggered
 
                 // Get form values
                 const formData = new FormData(this);
+                console.log("Form Data: ", formData); // Debugging: Log form data
 
                 // Send email via EmailJS
                 emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
