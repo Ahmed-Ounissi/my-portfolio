@@ -177,17 +177,17 @@
 
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact__container bd-grid">
-                <!-- Form Element with proper ID -->
-            <form id="contact-form" action="#" method="POST">
-                <input type="text" name="from_name" placeholder="Your Name" required>
-                <input type="email" name="from_email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <input type="submit" value="Send">
-            </form>
-            </div>
-        </section>
+                <h2 class="section-title">Contact</h2>
+        
+                <div class="contact__container bd-grid">
+                    <form id="contact-form" class="contact__form">
+                        <input type="text" name="from_name" placeholder="Name" class="contact__input" required>
+                        <input type="email" name="from_email" placeholder="Email" class="contact__input" required>
+                        <textarea name="message" placeholder="Your Message" class="contact__input" required></textarea>
+                        <input type="submit" value="Send" class="contact__button button">
+                    </form>
+                </div>
+            </section>
         </main>
 
         <!--===== FOOTER =====-->
@@ -203,33 +203,26 @@
 
         <!--===== SCROLL REVEAL =====-->
         <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                // Make sure the DOM is fully loaded before binding the form submit event
-                const contactForm = document.getElementById('contact-form');
+        // Form submission handler
+        document.getElementById('contact-form').addEventListener('submit', function(event){
+            event.preventDefault();  // Prevent the form from refreshing the page
 
-                if (contactForm) {
-                    contactForm.addEventListener('submit', function(event) {
-                        event.preventDefault();  // Prevents the form from reloading the page
-                        console.log("Form submitted"); // Debugging: Check if the form submit is triggered
+            // Get form data
+            const formData = new FormData(this);
 
-                        // Get form values
-                        const formData = new FormData(this);
-                        console.log("Form Data:", formData); // Debugging: Log form data
-
-                        // Send email via EmailJS
-                        emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
-                            .then(function(response) {
-                                console.log('Success:', response);
-                                alert('Message sent successfully!');
-                            }, function(error) {
-                                console.error('Failed:', error);
-                                alert('Something went wrong. Please try again.');
-                            });
-                    });
-                }
-            });
-        </script>
+            // Send email via EmailJS
+            emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
+                .then(function(response) {
+                    console.log('Success:', response);
+                    alert('Message sent successfully!');
+                }, function(error) {
+                    console.error('Failed:', error);
+                    alert('Something went wrong. Please try again.');
+                });
+        });
+    </script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     </body>
 </html>
