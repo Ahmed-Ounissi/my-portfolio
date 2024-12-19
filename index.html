@@ -10,6 +10,13 @@
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
         <title>Portfolio website complete</title>
+        
+        <!-- Initialize EmailJS -->
+    <script type="text/javascript">
+        (function(){
+            emailjs.init('service_z42zp7v');  // Replace with your EmailJS user ID
+        })();
+    </script>
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -207,7 +214,26 @@
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
-
+        <!-- Main JS script for form submission -->
+            <script type="text/javascript">
+                // Form submission handler
+                document.getElementById('contact-form').addEventListener('submit', function(event){
+                    event.preventDefault();  // Prevents the form from reloading the page
+        
+                    // Get form values
+                    const formData = new FormData(this);
+        
+                    // Send email via EmailJS
+                    emailjs.sendForm('your-service-id', 'your-template-id', formData)
+                        .then(function(response) {
+                            console.log('Success:', response);
+                            alert('Message sent successfully!');
+                        }, function(error) {
+                            console.error('Failed:', error);
+                            alert('Something went wrong. Please try again.');
+                        });
+                });
+            </script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
     </body>
