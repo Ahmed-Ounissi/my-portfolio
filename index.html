@@ -11,12 +11,6 @@
 
         <title>Portfolio website complete</title>
         
-        <!-- Initialize EmailJS -->
-        <script type="text/javascript">
-            (function(){
-                emailjs.init('aknDs3jAzDlkvygrv');  // 
-            })();
-        </script>
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -201,26 +195,6 @@
         </footer>
 
 
-        <!--===== SCROLL REVEAL =====-->
-        <script type="text/javascript">
-        // Form submission handler
-        document.getElementById('contact-form').addEventListener('submit', function(event){
-            event.preventDefault();  // Prevent the form from refreshing the page
-
-            // Get form data
-            const formData = new FormData(this);
-
-            // Send email via EmailJS
-            emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', formData)
-                .then(function(response) {
-                    console.log('Success:', response);
-                    alert('Message sent successfully!');
-                }, function(error) {
-                    console.error('Failed:', error);
-                    alert('Something went wrong. Please try again.');
-                });
-        });
-    </script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
         <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
