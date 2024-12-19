@@ -11,6 +11,8 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 
+emailjs.init("aknDs3jAzDlkvygrv);
+
 // Form submission handling
 const contactForm = document.getElementById('contact-form');
 
@@ -61,8 +63,6 @@ const scrollActive = () =>{
     })
 }
 window.addEventListener('scroll', scrollActive)
-
-cemailjs.init('aknDs3jAzDlkvygrv'); // Replace with your Public Key
 
 
 
