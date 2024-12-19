@@ -11,6 +11,26 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 
+// Form submission handling
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    // Show a loading message or spinner if needed
+    const formData = new FormData(contactForm);
+
+    emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', contactForm)
+        .then(() => {
+            alert('Message sent successfully!');
+            contactForm.reset(); // Clear form fields
+        })
+        .catch((error) => {
+            console.error('EmailJS Error:', error);
+            alert('Failed to send the message. Please try again.');
+        });
+});
+
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link')
 
@@ -44,25 +64,7 @@ window.addEventListener('scroll', scrollActive)
 
 cemailjs.init('aknDs3jAzDlkvygrv'); // Replace with your Public Key
 
-// Form submission handling
-const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent default form submission
-
-    // Show a loading message or spinner if needed
-    const formData = new FormData(contactForm);
-
-    emailjs.sendForm('service_z42zp7v', 'template_nnr11ry', contactForm)
-        .then(() => {
-            alert('Message sent successfully!');
-            contactForm.reset(); // Clear form fields
-        })
-        .catch((error) => {
-            console.error('EmailJS Error:', error);
-            alert('Failed to send the message. Please try again.');
-        });
-});
 
 /*===== SCROLL REVEAL ANIMATION =====*/
 const sr = ScrollReveal({
